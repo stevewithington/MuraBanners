@@ -61,7 +61,7 @@ component accessors=true extends='mura.cfobject' output=false {
 		// check to make sure it's an image
 		if ( not ListFindNoCase('jpg,jpeg,gif,png', local.meta.fileExt) ) {
 			if ( local.content.getContentID() eq '00000000000000000000000000000000001' or !local.useParent) {
-				return ''; // we're on the home page and no luck
+				return '';
 			} else { // try the parent node
 				return dspBanner(
 					contentid = local.content.getParentID()
