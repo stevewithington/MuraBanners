@@ -51,7 +51,7 @@ if ( StructKeyExists(session, 'siteid') ) {
 	</ul>
 	
 	<h3>Questions / Issues?</h3>
-	<p>Visit the project at <a href="https://github.com/stevewithington" target="_blank">https://github.com/stevewithington/MuraBanners.git</a></p>
+	<p>Visit the project at <a href="https://github.com/stevewithington/MuraBanners" target="_blank">https://github.com/stevewithington/MuraBanners</a></p>
 	
 	<p>Cheers!<br />
 	<a href="http://stephenwithington.com">Steve Withington</a></p>
