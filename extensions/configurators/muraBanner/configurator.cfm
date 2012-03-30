@@ -63,10 +63,16 @@
 			<dt class="first"><label for="size">Banner Size</label></dt>
 			<dd>
 				<select name="size" id="size" class="objectParam">
-					<option value="small"<cfif params.size eq 'small'> selected="selected"</cfif>>Small</option>
-					<option value="medium"<cfif params.size eq 'medium'> selected="selected"</cfif>>Medium</option>
-					<option value="large"<cfif params.size eq 'large'> selected="selected"</cfif>>Large</option>
-					<option value="custom"<cfif params.size eq 'custom'> selected="selected"</cfif>>Custom</option>
+					<cfscript>
+						opts = ['Small','Medium','Large','Custom'];
+						for ( i=1; i lte ArrayLen(opts); i++ ) {
+							WriteOutput('<option value="' & LCase(opts[i]) & '"');
+							if ( params.size eq opts[i] ) {
+								WriteOutput(' selected="selected"');
+							};
+							WriteOutput('>' & opts[i] & '</option>');
+						};
+					</cfscript>
 				</select>
 			</dd>
 			<!--- BANNER WIDTH / HEIGHT --->
