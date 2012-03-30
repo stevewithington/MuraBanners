@@ -8,8 +8,8 @@ Simply go to the Extended Attributes tab, then upload a banner image (.jpg, .jpe
 
 ###Example:
 
-```[mura]$.muraBanners.dspBanner()[/mura]
-```
+[mura]$.muraBanners.dspBanner()[/mura]
+
 
 ##Developers & Designers
 
