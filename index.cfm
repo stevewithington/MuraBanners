@@ -25,6 +25,10 @@ if ( StructKeyExists(session, 'siteid') ) {
 } else {
 	$.init('default');
 };
+// restrict to Super Users
+if ( !StructKeyExists(session, 'siteID') or !$.currentUser().isLoggedIn() or !$.currentUser().isSuperUser() ){
+	location(application.configBean.getContext() & '/admin/', false);
+};
 </cfscript>
 <style type="text/css">
 	#bodyWrap h3{padding-top:1em;}
@@ -33,7 +37,7 @@ if ( StructKeyExists(session, 'siteid') ) {
 <cfsavecontent variable="body">
 <div id="bodyWrap">
 	<h2>MuraBanners&trade;</h2>
-	<p>MuraBanners enables you to have a specific banner for each page of the site. If no banner is selected for a specific page, then this plugin begins checking each parent on up to the Home Page looking for one to use, unless you explicitly set Use Parent Banner to No, or its parent doesn't have a banner and is set to No. You can even specify the width and height of the banner.</p>
+	<p>MuraBanners enables you to have a specific banner for each page of the site. If no banner is selected for a specific page, then this plugin begins checking each parent on up to the Home Page looking for one to use. You can even specify the width and height of the banner.</p>
 	<h3>Content Editors/Authors</h3>
 	<p>Simply go to the Extended Attributes tab, then upload a banner image (.jpg, .jpeg, .gif, .png). If your layout template doesn't already contain the code for the banner to display, you can use [mura] tags to do so inline with your content via the Content Editor.</p>
 	<h5>Example:</h5>
@@ -55,6 +59,7 @@ if ( StructKeyExists(session, 'siteid') ) {
 	
 	<p>Cheers!<br />
 	<a href="http://stephenwithington.com">Steve Withington</a></p>
+	
 </div>
 </cfsavecontent>
 <cfoutput>

@@ -34,22 +34,16 @@ component accessors=true extends='mura.cfobject' output=false {
 	};
 
 	/**
-	* dspBanner()
-	* Depends on the extended attribute 'bannerImage' being available under Custom Class Extensions
-	* which is auto-created upon plugin installation
-	* @output false
-	* @$ mura scope
-	* @size options: large,medium,small,custom
-	* @height in pixels
-	* @width in pixels
+	* Depends on the extended attribute 'bannerImage' being available under 
+	* Custom Class Extensions which is auto-created upon plugin installation
 	*/
 	public any function dspBanner(
-		struct $=get$()
-		, contentid=$.content('contentid')
-		, size='large'
-		, height='auto'
-		, width='auto'
+		size='large'
+		, height='AUTO'
+		, width='AUTO'
+		, $=get$()
 		, alt=$.content('title')
+		, contentid=$.content('contentid')
 	) {
 		var local = {};
 		local.content = $.getBean('content').loadBy(arguments.contentid);

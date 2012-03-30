@@ -18,6 +18,7 @@
 * with this program; if not, write to the Free Software Foundation, Inc.,
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 *
+* @$ mura scope
 */
 component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=false {
 	
@@ -37,9 +38,59 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	*/
 	public any function onSiteRequestStart(required struct $) {
 		var local = {};
-		local.contentRenderer = new contentRenderer($); // init with mura scope!
+		local.contentRenderer = new contentRenderer($);
 		$.setCustomMuraScopeKey('muraBanners', local.contentRenderer);
-		// now you should be able to call $.muraBanners.someMethod()
+	};
+
+
+	/* 
+	* CONFIGURED DISPLAY OBJECTS
+	* --------------------------------------------------------------------- */
+	
+	/**
+	* dspConfiguredMuraBanner()
+	* @output false
+	* @$ mura scope
+	*/
+	public any function dspConfiguredMuraBanner(required struct $) {
+		var local = {};
+
+		local.params = $.event('objectParams');
+		
+		local.defaultParams = {
+			size = 'large'
+			, width = 'AUTO'
+			, height = 'AUTO'
+			, $ = arguments.$
+			, alt = $.content('title')
+			, contentid = $.content('contentid')
+		};
+		
+		for ( local.key in local.defaultParams ) {
+			if ( !StructKeyExists(local.params, local.key) ) {
+				local.params[local.key] = local.defaultParams[local.key];
+			};
+		}
+
+		local.str = $.muraBanners.dspBanner(argumentCollection=local.params);
+		
+		/*
+		savecontent variable='local.str' {
+			WriteOutput('<h3>MuraBanners&trade;</h3><h4>Available objectParams</h4><ul>');
+			for ( local.key in local.params ) {
+				if ( IsSimpleValue(local.params[local.key]) ) {
+					WriteOutput(
+						'<li><strong>' & local.key & '</strong>: ' & local.params[local.key] & '</li>'
+					);
+				} else {
+					//WriteDump(local.params[local.key]); // probably the mura scope
+				};
+			};
+			WriteOutput('</ul>');
+		};
+		*/
+		
+		return local.str;
 	};
 
 }
