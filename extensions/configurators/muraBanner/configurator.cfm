@@ -49,8 +49,7 @@
 		if ( this.value == 'custom' ) {
 			o.fadeIn('fast');
 		} else {
-			o.hide();
-			o.find(':input').val('AUTO');
+			o.hide().find(':input').val('AUTO');
 		};
 	});
 </script>
