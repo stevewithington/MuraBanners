@@ -65,12 +65,8 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 			, alt = $.content('title')
 			, contentid = $.content('contentid')
 		};
-		
-		for ( local.key in local.defaultParams ) {
-			if ( !StructKeyExists(local.params, local.key) ) {
-				local.params[local.key] = local.defaultParams[local.key];
-			};
-		}
+
+		StructAppend(local.params, local.defaultParams, false);
 
 		local.str = $.muraBanners.dspBanner(argumentCollection=local.params);
 		
