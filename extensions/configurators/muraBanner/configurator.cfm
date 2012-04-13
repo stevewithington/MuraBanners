@@ -33,11 +33,7 @@
 		, height = 'AUTO'
 	};
 	
-	for ( key in defaultParams ) {
-		if ( !StructKeyExists(params, key) ) {
-			params[key] = defaultParams[key];
-		};
-	}
+	StructAppend(params, defaultParams, false);
 </cfscript>
 <style type="text/css">
 	#availableObjectParams dt { padding-top:1em; }
