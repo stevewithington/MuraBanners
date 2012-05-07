@@ -16,8 +16,7 @@ Simply go to the Extended Attributes tab, then upload a banner image (.jpg, .jpe
 You can easily drop the following code into any layout template (e.g., header.cfm) and be done:
 
 ###Example:
-```#$.muraBanners.dspBanner(width=yourDesiredWidth, height=yourDesiredHeight)#
-```
+```#$.muraBanners.dspBanner(width=yourDesiredWidth, height=yourDesiredHeight)```
 
 
 ##Tested With
