@@ -10,14 +10,18 @@
 */
 component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=false {
 
+	property name='$' hint='mura scope';
+
 	public any function onApplicationLoad(required struct $) {
 		variables.pluginConfig.addEventHandler(this);
+		set$(arguments.$);
 	};
 
 	public any function onSiteRequestStart(required struct $) {
 		var local = {};
-		local.contentRenderer = new contentRenderer($);
-		$.setCustomMuraScopeKey('muraBanners', local.contentRenderer);
+		local.contentRenderer = new contentRenderer(arguments.$);
+		arguments.$.setCustomMuraScopeKey('muraBanners', local.contentRenderer);
+		set$(arguments.$);
 	};
 
 
@@ -27,21 +31,22 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 
 	public any function dspConfiguredMuraBanner(required struct $) {
 		var local = {};
+		set$(arguments.$);
 
-		local.params = $.event('objectParams');
+		local.params = arguments.$.event('objectParams');
 		
 		local.defaultParams = {
 			size = 'large'
 			, width = 'AUTO'
 			, height = 'AUTO'
 			, $ = arguments.$
-			, alt = $.content('title')
-			, contentid = $.content('contentid')
+			, alt = arguments.$.content('title')
+			, contentid = arguments.$.content('contentid')
 		};
 
 		StructAppend(local.params, local.defaultParams, false);
 
-		local.str = $.muraBanners.dspBanner(argumentCollection=local.params);
+		local.str = arguments.$.muraBanners.dspBanner(argumentCollection=local.params);
 		
 		/*
 		savecontent variable='local.str' {
