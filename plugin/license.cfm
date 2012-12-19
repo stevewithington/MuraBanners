@@ -1,1 +1,1 @@
-<pre><cfinclude template="license.txt" /></pre>
+<pre><cfinclude template="../license.txt" /></pre>

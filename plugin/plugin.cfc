@@ -2,32 +2,17 @@
 /**
 * 
 * This file is part of MuraBanners TM
-* (c) Stephen J. Withington, Jr. | www.blueriver.com
 *
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-* 
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public License along
-* with this program; if not, write to the Free Software Foundation, Inc.,
-* 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+* Copyright 2012 Stephen J. Withington, Jr.
+* Licensed under the Apache License, Version v2.0
+* http://www.apache.org/licenses/LICENSE-2.0
 *
 */
 component accessors=true extends='mura.plugin.plugincfc' output=false {
 
 	property name='config';
 	property name='packageName';
-	
-	/**
-	* Constructor
-	* @output false
-	*/
+
 	public any function init(config='') {
 		if ( IsSimpleValue(arguments.config) and StructKeyExists(application, 'configBean') ) {
 			arguments.config = application.configBean;
@@ -37,9 +22,6 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 		return this;
 	};
 	
-	/**
-	* @output false
-	*/
 	public void function install() {
 		var local = {};
 		// need to check and see if this is already installed ... if so, then abort!
@@ -50,18 +32,12 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 		};
 		super.install();
 	};
-	
-	/**
-	* @output false
-	*/
+
 	public void function update() {
 		var local = {};
 		super.update();
 	};
 	
-	/**
-	* @output false
-	*/
 	public void function delete() {
 		var local = {};
 		super.delete();
@@ -69,7 +45,6 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 	
 	/**
 	* i check to see if this plugin has already been installed. if so, i delete the new one.
-	* @output false
 	*/
 	private any function getInstallationCount(boolean debug=false) {
 		var qs = '';
@@ -99,7 +74,6 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 
 	/**
 	* Metadata property inspector
-	* @output false
 	*/
 	public struct function getProperties() {
 		var local = {};
