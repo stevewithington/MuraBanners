@@ -15,15 +15,14 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	public any function onApplicationLoad(required struct $) {
 		variables.pluginConfig.addEventHandler(this);
 		set$(arguments.$);
-	};
+	}
 
 	public any function onSiteRequestStart(required struct $) {
 		var local = {};
 		local.contentRenderer = new contentRenderer(arguments.$);
 		arguments.$.setCustomMuraScopeKey('muraBanners', local.contentRenderer);
 		set$(arguments.$);
-	};
-
+	}
 
 	/* 
 	* CONFIGURED DISPLAY OBJECTS
@@ -65,7 +64,7 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 		*/
 		
 		return local.str;
-	};
+	}
 
 }
 </cfscript>

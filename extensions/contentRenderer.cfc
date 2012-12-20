@@ -15,7 +15,7 @@ component accessors=true extends='mura.cfobject' output=false {
 	public any function init(required struct $) {
 		set$($);
 		return this;
-	};
+	}
 
 	/**
 	* Depends on the extended attribute 'bannerImage' being available under 
@@ -26,24 +26,24 @@ component accessors=true extends='mura.cfobject' output=false {
 		, height='AUTO'
 		, width='AUTO'
 		, $=get$()
-		, alt=$.content('title')
-		, contentid=$.content('contentid')
+		, alt=get$().content('title')
+		, contentid=get$().content('contentid')
 	) {
 		var local = {};
-		local.content = $.getBean('content').loadBy(arguments.contentid);
+		local.content = arguments.$.getBean('content').loadBy(arguments.contentid);
 		local.bannerImageFileID = local.content.getValue('bannerImage');
 		local.useParent = YesNoFormat(local.content.getValue('bannerParent'));	
-		local.fm = $.getBean('fileManager');
+		local.fm = arguments.$.getBean('fileManager');
 		local.meta = local.fm.readMeta(local.bannerImageFileID);
 		
 		// check to make sure it's an image
-		if ( not ListFindNoCase('jpg,jpeg,gif,png', local.meta.fileExt) ) {
-			if ( local.content.getContentID() eq '00000000000000000000000000000000001' or !local.useParent) {
+		if ( !ListFindNoCase('jpg,jpeg,gif,png', local.meta.fileExt) ) {
+			if ( local.content.getContentID() == '00000000000000000000000000000000001' || !local.useParent) {
 				return '';
 			} else { // try the parent node
 				return dspBanner(
 					contentid = local.content.getParentID()
-					, size = arguments.size
+					, size = LCase(arguments.size)
 					, height = arguments.height
 					, width = arguments.width
 				);
@@ -61,17 +61,17 @@ component accessors=true extends='mura.cfobject' output=false {
 		);
 		
 		return '<img border="0" alt="' & HTMLEditFormat(arguments.alt) & '" src="' & local.imgSrc & '" />';
-	};
+	}
 
 	public struct function getProperties() {
 		var local = {};
 		local.properties = {};
 		local.data = getMetaData(this).properties;
-		for ( local.i=1; local.i lte ArrayLen(local.data); local.i++ ) {
+		for ( local.i=1; local.i <= ArrayLen(local.data); local.i++ ) {
 			local.properties[local.data[local.i].name] = Evaluate('get#local.data[local.i].name#()');
 		};
 		return local.properties;
-	};
+	}
 
 }
 </cfscript>

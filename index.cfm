@@ -36,16 +36,27 @@ if ( !StructKeyExists(session, 'siteID') or !$.currentUser().isLoggedIn() or !$.
 	<p>You can easily drop the following code into any layout template (e.g., header.cfm) and be done:</p>
 	<h5>Example:</h5>
 	<pre class="notice">#$.muraBanners.dspBanner(width=yourDesiredWidth, height=yourDesiredHeight)#</pre>
+
+	<h5>Mura 6.0 Example</h5>
+	<p>As of Mura 6.0, you can now create custom image sizes via Site Config &gt; Edit Site &gt; Images tab. This enables you to select your own crop region of the banner image! Simply pass in the size attribute with your custom image name.</p>
+	<pre class="notice">#$.muraBanners.dspBanner(size='mybannerimage')#</pre>
 	
 	<h3>Tested With</h3>
+	<ul>
+		<li>Mura CMS Core Version <strong>6.0+</strong></li>
+		<li>Adobe ColdFusion <strong>10.0.4</strong></li>
+		<li>Railo <strong>4.0.2</strong></li>
+	</ul>
+
+	<h4>Should Also Work On</h4>
 	<ul>
 		<li>Mura CMS Core Version <strong>5.6.4859</strong></li>
 		<li>Adobe ColdFusion <strong>9.0.1</strong></li>
 		<li>Railo <strong>3.3.1</strong></li>
 	</ul>
-	
-	<h3>Questions / Issues?</h3>
-	<p>Visit the project at <a href="https://github.com/stevewithington/MuraBanners" target="_blank">https://github.com/stevewithington/MuraBanners</a></p>
+
+	<h3>Need help?</h3>
+	<p>If you're running into an issue, please let me know at <a href="https://github.com/stevewithington/MuraBanners/issues">https://github.com/stevewithington/MuraBanners/issues</a> and I'll try to address it as soon as I can.</p>
 	
 	<p>Cheers!<br />
 	<a href="http://stephenwithington.com">Steve Withington</a></p>

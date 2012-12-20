@@ -10,6 +10,15 @@
 */
 	$ = application.serviceFactory.getBean('MuraScope').init(session.siteid);
 
+	arrImageSizes = ['small','medium','large','custom'];
+
+	// IF MuraCMS v6.0+, there may be one or more custom predefined image sizes available
+	if ( ListFirst($.globalConfig('version'), '.') gte 6 ) {
+		rsImageSizes = $.siteConfig().getCustomImageSizeQuery();
+		arrCustomImageSizes = ListToArray(ValueList(rsImageSizes.name));
+		arrImageSizes.addAll(arrCustomImageSizes);
+	};
+
 	if ( IsJSON($.event('params')) ) {
 		params = DeSerializeJSON($.event('params'));
 	} else {
@@ -49,7 +58,7 @@
 			<dd>
 				<select name="size" id="size" class="objectParam">
 					<cfscript>
-						opts = ['Small','Medium','Large','Custom'];
+						opts = arrImageSizes;
 						for ( i=1; i lte ArrayLen(opts); i++ ) {
 							WriteOutput('<option value="' & LCase(opts[i]) & '"');
 							if ( params.size eq opts[i] ) {
