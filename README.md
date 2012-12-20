@@ -12,6 +12,8 @@ Simply go to the Extended Attributes tab, then upload a banner image (.jpg, .jpe
 [mura]$.muraBanners.dspBanner()[/mura]
 ```
 
+The banner may also be assigned to a display region as a configurable content display object. Go to Layouts & Objects > Select 'Plugins' from the 'Available Content Objects' select menu > Select 'MuraBanners' from the list of plugins > Select 'MuraBanner' and assign it to your desired display region. When the 'MuraBanner' configurator appears, select your desired 'Banner Size' from the list of options and click 'Save' then Publish your page.
+
 ##Developers & Designers
 
 You can easily drop the following code into any layout template (e.g., header.cfm) and be done:

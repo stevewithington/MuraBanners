@@ -28,10 +28,14 @@ if ( !StructKeyExists(session, 'siteID') or !$.currentUser().isLoggedIn() or !$.
 <div id="bodyWrap">
 	<h2>MuraBanners&trade;</h2>
 	<p>MuraBanners enables you to have a specific banner for each page of the site. If no banner is selected for a specific page, then this plugin begins checking each parent on up to the Home Page looking for one to use. You can even specify the width and height of the banner.</p>
+
 	<h3>Content Editors/Authors</h3>
 	<p>Simply go to the Extended Attributes tab, then upload a banner image (.jpg, .jpeg, .gif, .png). If your layout template doesn't already contain the code for the banner to display, you can use [mura] tags to do so inline with your content via the Content Editor.</p>
 	<h5>Example:</h5>
 <pre class="notice">[mura]$.muraBanners.dspBanner()[/mura]</pre>
+
+	<p>The banner may also be assigned to a display region as a configurable content display object. Go to Layouts &amp; Objects &gt; Select 'Plugins' from the 'Available Content Objects' select menu &gt; Select 'MuraBanners' from the list of plugins &gt; Select 'MuraBanner' and assign it to your desired display region. When the 'MuraBanner' configurator appears, select your desired 'Banner Size' from the list of options and click 'Save' then Publish your page.</p>
+
 	<h3>Developers &amp; Designers</h3>
 	<p>You can easily drop the following code into any layout template (e.g., header.cfm) and be done:</p>
 	<h5>Example:</h5>
