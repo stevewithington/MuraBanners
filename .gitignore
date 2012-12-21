@@ -1,4 +1,13 @@
 *~
-*_notes/
-Thumbs.db
 .DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.rdsTempFiles
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+*_notes/

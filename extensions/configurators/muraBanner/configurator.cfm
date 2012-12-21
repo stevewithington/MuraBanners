@@ -19,11 +19,10 @@
 		arrImageSizes.addAll(arrCustomImageSizes);
 	};
 
+	params = {};
 	if ( IsJSON($.event('params')) ) {
 		params = DeSerializeJSON($.event('params'));
-	} else {
-		params = {};
-	}
+	};
 
 	defaultParams = {
 		size = 'large'
@@ -57,16 +56,9 @@
 			<dt class="first"><label for="size">Banner Size</label></dt>
 			<dd>
 				<select name="size" id="size" class="objectParam">
-					<cfscript>
-						opts = arrImageSizes;
-						for ( i=1; i lte ArrayLen(opts); i++ ) {
-							WriteOutput('<option value="' & LCase(opts[i]) & '"');
-							if ( params.size eq opts[i] ) {
-								WriteOutput(' selected="selected"');
-							};
-							WriteOutput('>' & opts[i] & '</option>');
-						};
-					</cfscript>
+					<cfloop array="#arrImageSizes#" index="image">
+						<option value="#LCase(image)#"<cfif params.size eq image> selected="selected"</cfif>>#HTMLEditFormat(image)#</option>
+					</cfloop>
 				</select>
 			</dd>
 			<!--- BANNER WIDTH / HEIGHT --->
@@ -78,7 +70,6 @@
 						class="objectParam" 
 						value="#params.width#" />
 				</dd>
-				
 				<dt><label for="height">Banner Height</label></dt>
 				<dd>
 					<input type="text" 

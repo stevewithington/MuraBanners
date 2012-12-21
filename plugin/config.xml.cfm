@@ -15,7 +15,7 @@
 	<package>MuraBanners</package>
 	<directoryFormat>packageOnly</directoryFormat>
 	<loadPriority>5</loadPriority>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<provider>Steve Withington</provider>
 	<providerURL>http://stephenwithington.com</providerURL>
 	<category>Utility</category>

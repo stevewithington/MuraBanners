@@ -1,4 +1,3 @@
-<cfscript>
 /**
 * 
 * This file is part of MuraBanners TM
@@ -74,4 +73,3 @@ component accessors=true extends='mura.cfobject' output=false {
 	}
 
 }
-</cfscript>

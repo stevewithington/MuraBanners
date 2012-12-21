@@ -8,16 +8,17 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-
-$ = application.serviceFactory.getBean('muraScope');
-if ( StructKeyExists(session, 'siteid') ) {
-	$.init(session.siteid);
-} else {
-	$.init('default');
+if ( !IsDefined('$') ) {
+	$ = application.serviceFactory.getBean('$');
+	if ( StructKeyExists(session, 'siteid') ) {
+		$.init(session.siteid);
+	} else {
+		$.init('default');
+	};
 };
 // restrict to Super Users
-if ( !StructKeyExists(session, 'siteID') or !$.currentUser().isLoggedIn() or !$.currentUser().isSuperUser() ){
-	location(application.configBean.getContext() & '/admin/', false);
+if ( !$.currentUser().isSuperUser() ){
+	location($.globalConfig('context') & '/admin/', false);
 };
 </cfscript>
 <style type="text/css">
