@@ -15,7 +15,7 @@
 	<package>MuraBanners</package>
 	<directoryFormat>packageOnly</directoryFormat>
 	<loadPriority>5</loadPriority>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 	<provider>Steve Withington</provider>
 	<providerURL>http://stephenwithington.com</providerURL>
 	<category>Utility</category>
@@ -34,7 +34,7 @@
 			component="extensions.eventHandler"
 			displaymethod="dspConfiguredMuraBanner"
 			configuratorJS="extensions/configurators/muraBanner/configurator.js"
-			configuratorInit="init"
+			configuratorInit="initMuraBannersConfigurator"
 			persist="false" />
 
 	</displayobjects>

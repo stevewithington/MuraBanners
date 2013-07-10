@@ -12,7 +12,10 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	property name='$' hint='mura scope';
 
 	public any function onApplicationLoad(required struct $) {
+		var local = {};
 		variables.pluginConfig.addEventHandler(this);
+		//local.contentRenderer = new contentRenderer(arguments.$);
+		//arguments.$.setCustomMuraScopeKey('muraBanners', local.contentRenderer);
 		set$(arguments.$);
 	}
 

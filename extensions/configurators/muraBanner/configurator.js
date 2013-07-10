@@ -7,7 +7,7 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-function init(data) {
+function initMuraBannersConfigurator(data) {
 
 	initConfigurator(data,{
 		url: '../plugins/MuraBanners/extensions/configurators/muraBanner/configurator.cfm'
